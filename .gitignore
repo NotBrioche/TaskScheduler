@@ -1,0 +1,6 @@
+# Security
+.env
+
+# QOL
+node_modules/
+dist/
