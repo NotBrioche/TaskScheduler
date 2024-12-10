@@ -19,7 +19,7 @@ schedules.sort((a: Task, b: Task) => {
 
   return a.start?.getTime() - b.start?.getTime();
 });
-
+const schedulesPassed: Array<any> = [];
 tasks.forEach((t) => {
   schedules.forEach((s) => {
     if (s.start == null || s.end == null) return;
@@ -28,17 +28,17 @@ tasks.forEach((t) => {
 
     if (
       data.start.getTime() / 1000 + t.timeToDo * 60 + passed >=
-      s.start.getTime() / 1000
+      s.start.getTime() / 1000 && data.start.getTime() / 1000 + t.timeToDo * 60 + passed <= s.end.getTime() / 1000
     ) {
-      // const differ = data.start.getTime() / 1000 + t.timeToDo * 60 + passed - s.start.getTime();
       passed += time;
 
       elements.push(s);
+      schedulesPassed.push(s);
       return;
     }
   });
   elements.push(t);
-  passed = t.timeToDo * 60;
+  passed += t.timeToDo * 60;
 });
 
 if (
@@ -46,26 +46,32 @@ if (
   data.start.getTime() / 1000 + tasks[tasks.length - 1].timeToDo * 60 + passed <
     schedules[0].start?.getTime()
 ) {
-  schedules.forEach((s) => {
-    elements.push(s);
-  });
+  for (let i = 0; i < schedules.length; i++) {
+    if (!schedulesPassed.includes(schedules[i]))
+      elements.push(schedules[i])
+  }
 }
 
 passed = 0;
 
-elements.forEach((e) => {
-  if (e.start == null) {
-    e.start = new Date(data.start.getTime() + passed * 1000);
-    e.end = new Date(
-      data.start.getTime() + passed * 1000 + e.timeToDo * 60 * 1000
+console.log(`--- ${data.start.toDateString()} ---`);
+
+
+for (let i = 0; i < elements.length; i++) {
+  if (elements[i].start == null) {
+    elements[i].start = new Date(data.start.getTime() + passed * 1000);
+    elements[i].end = new Date(
+      data.start.getTime() + passed * 1000 + elements[i].timeToDo * 60 * 1000
     );
   }
 
-  passed += e.timeToDo * 60;
-  // console.log(e.toString());
+  passed += elements[i].timeToDo * 60;
+  if (i > 0)
+    passed += (elements[i].start!.getTime() - elements[i - 1].end!.getTime()) / 1000
+
   console.log(
-    `[1] ${e.name} - ${
-      e.timeToDo
-    }min (${e.start?.toLocaleTimeString()} - ${e.end?.toLocaleTimeString()})`
+    `[${i + 1}] ${elements[i].name} - ${
+      elements[i].timeToDo
+    }min (${elements[i].start?.toLocaleTimeString()} - ${elements[i].end?.toLocaleTimeString()})`
   );
-});
+};
