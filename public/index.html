@@ -1,11 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta chabrset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="script/script.js" defer></script>
     <title>Document</title>
   </head>
   <body>
-    <h1>Hello world!</h1>
+    <h1>TaskScheduler</h1>
+    <form method="post">
+      <div id="new_task">
+        <h2>Nouvelle tâche</h2>
+        <hr />
+        <div class="user_input">
+          <label for="title_task">Titre:</label>
+          <input type="text" id="title_task" required />
+          <p class="error">Veuillez renseigner ce champ</p>
+        </div>
+
+        <div class="user_input">
+          <label for="time">Temps requis (min):</label>
+          <input
+            type="number"
+            id="time"
+            placeholder="15min"
+            min="1"
+            max="180"
+            required
+          />
+          <p class="error">Veuillez renseigner ce champ</p>
+        </div>
+
+        <div class="priority">
+          <label for="no_priority">Aucune</label>
+          <input
+            type="radio"
+            name="priority"
+            id="no_priority"
+            value="none"
+            checked
+          />
+        </div>
+        <div class="priority">
+          <label for="low_priority">Faible</label>
+          <input type="radio" name="priority" id="low_priority" value="low" />
+        </div>
+        <div class="priority">
+          <label for="medium_priority">Moyenne</label>
+          <input
+            type="radio"
+            name="priority"
+            id="medium_priority"
+            value="medium"
+          />
+        </div>
+        <div class="priority">
+          <label for="high_priority">Élevée</label>
+          <input type="radio" name="priority" id="high_priority" value="high" />
+        </div>
+        <hr />
+        <button type="submit">Envoyer</button>
+      </div>
+    </form>
+
+    <h2>Nouveau Rendez-vous</h2>
+    <form>
+      <label for="titleSchedule">Titre:</label>
+      <input type="text" id="titleSchedule" />
+      <br />
+      <label for="start">Début:</label>
+      <input type="datetime" name="start" id="start" />
+      <br />
+      <label for="end">Fin:</label>
+      <input type="datetime" name="end" id="end" />
+      <br />
+      <button type="submit">Envoyer</button>
+    </form>
   </body>
 </html>

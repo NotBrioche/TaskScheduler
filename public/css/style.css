@@ -1,0 +1,48 @@
+#new_task {
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+  padding: 1rem 2rem;
+  width: 20dvw;
+  margin: 0px auto;
+}
+
+.user_input {
+  margin-bottom: 1rem;
+}
+
+.user_input > * {
+  display: block;
+  width: 100%;
+}
+
+.user_input > input {
+  padding: 0.3rem;
+}
+
+#new_task > button[type="submit"] {
+  align-self: center;
+  padding: 0.2rem 1rem;
+}
+
+#new_task > div.priority {
+  width: 25%;
+  justify-content: space-between;
+  display: flex;
+}
+
+#new_task p.error {
+  font-size: 13px;
+  color: red;
+  margin-top: 3px;
+}
+
+hr {
+  border: 1px black solid;
+  width: 100%;
+  margin: 1rem 0px;
+}
+
+h2 {
+  margin: 0px;
+}
