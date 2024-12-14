@@ -1,4 +1,10 @@
-#new_task {
+#inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.input {
   display: flex;
   flex-direction: column;
   border: 1px black solid;
@@ -11,6 +17,30 @@
   margin-bottom: 1rem;
 }
 
+.elem {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  width: 40vw;
+}
+
+.elem > h1 {
+  font-size: 20px;
+  flex-grow: 2;
+  margin: 0px;
+}
+
+.elem > p {
+  flex-grow: 1;
+  margin: 0px;
+}
+
+.elem ~ .elem {
+  border-top: 0px;
+}
+
 .user_input > * {
   display: block;
   width: 100%;
@@ -20,18 +50,18 @@
   padding: 0.3rem;
 }
 
-#new_task > button[type="submit"] {
+.input > button[type="submit"] {
   align-self: center;
   padding: 0.2rem 1rem;
 }
 
-#new_task > div.priority {
+.input > div.priority {
   width: 25%;
   justify-content: space-between;
   display: flex;
 }
 
-#new_task p.error {
+.input p.error {
   font-size: 13px;
   color: red;
   margin-top: 3px;
