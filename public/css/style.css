@@ -4,6 +4,10 @@
   justify-content: space-evenly;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .input {
   display: flex;
   flex-direction: column;
@@ -11,10 +15,6 @@
   padding: 1rem 2rem;
   width: 20dvw;
   margin: 0px auto;
-}
-
-.user_input {
-  margin-bottom: 1rem;
 }
 
 .elem {

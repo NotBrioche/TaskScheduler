@@ -10,14 +10,14 @@
   <body>
     <h1>TaskScheduler</h1>
     <div id="inputs">
-      <form method="post">
+      <form method="post" onsubmit="taskSubmit();">
         <div class="input">
           <h2>Nouvelle tâche</h2>
           <hr />
           <div class="user_input">
             <label for="title_task">Titre:</label>
             <input type="text" id="title_task" required />
-            <p class="error">Veuillez renseigner ce champ</p>
+            <p class="error invisible">Veuillez entrer un titre non vide</p>
           </div>
 
           <div class="user_input">
@@ -25,12 +25,12 @@
             <input
               type="number"
               id="time"
-              placeholder="15min"
+              placeholder="1 - 180"
               min="1"
               max="180"
               required
             />
-            <p class="error">Veuillez renseigner ce champ</p>
+            <p class="error invisible">Veuillez entrer un nombre valide</p>
           </div>
 
           <div class="priority">
@@ -77,19 +77,19 @@
           <div class="user_input">
             <label for="title_task">Titre:</label>
             <input type="text" id="title_task" required />
-            <p class="error">Veuillez renseigner ce champ</p>
+            <p class="error invisible">Veuillez renseigner ce champ</p>
           </div>
 
           <div class="user_input">
             <label for="time">Début:</label>
             <input type="text" placeholder="17:00" required />
-            <p class="error">Veuillez renseigner ce champ</p>
+            <p class="error invisible">Veuillez renseigner ce champ</p>
           </div>
 
           <div class="user_input">
             <label for="time">Fin:</label>
             <input type="text" placeholder="19:00" required />
-            <p class="error">Veuillez renseigner ce champ</p>
+            <p class="error invisible">Veuillez renseigner ce champ</p>
           </div>
 
           <hr />
@@ -99,15 +99,14 @@
     </div>
 
     <h2>Enregistré:</h2>
-    <div class="elem">
-      <h1>Faire la vaisselle</h1>
-      <p>15min</p>
-      <button>X</button>
-    </div>
-    <div class="elem">
-      <h1>Spectacle</h1>
-      <p>17:00 - 19:00</p>
-      <button>X</button>
-    </div>
+    <br />
+    <template>
+      <div class="elem">
+        <h1>Faire la vaisselle</h1>
+        <p>15min</p>
+        <button onclick="deleteEntry(event);">X</button>
+      </div>
+    </template>
+    <div class="elems"></div>
   </body>
 </html>
