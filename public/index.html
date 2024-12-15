@@ -10,7 +10,7 @@
   <body>
     <h1>TaskScheduler</h1>
     <div id="inputs">
-      <form method="post" onsubmit="taskSubmit();">
+      <form onsubmit="taskSubmit();">
         <div class="input">
           <h2>Nouvelle tâche</h2>
           <hr />
@@ -66,34 +66,34 @@
             />
           </div>
           <hr />
-          <button type="submit">Envoyer</button>
+          <button type="submit">Créer</button>
         </div>
       </form>
 
-      <form method="post">
+      <form onsubmit="eventSubmit();">
         <div class="input">
           <h2>Nouveau rendez-vous</h2>
           <hr />
           <div class="user_input">
-            <label for="title_task">Titre:</label>
-            <input type="text" id="title_task" required />
+            <label for="title_event">Titre:</label>
+            <input type="text" id="title_event" required />
             <p class="error invisible">Veuillez renseigner ce champ</p>
           </div>
 
           <div class="user_input">
-            <label for="time">Début:</label>
-            <input type="text" placeholder="17:00" required />
-            <p class="error invisible">Veuillez renseigner ce champ</p>
+            <label for="start">Début:</label>
+            <input type="text" placeholder="17:00" id="start" required />
+            <p class="error invisible">Veuillez entrer un format valide</p>
           </div>
 
           <div class="user_input">
-            <label for="time">Fin:</label>
-            <input type="text" placeholder="19:00" required />
-            <p class="error invisible">Veuillez renseigner ce champ</p>
+            <label for="end">Fin:</label>
+            <input type="text" placeholder="19:00" id="end" required />
+            <p class="error invisible">Veuillez entrer un format valide</p>
           </div>
 
           <hr />
-          <button type="submit">Envoyer</button>
+          <button type="submit">Créer</button>
         </div>
       </form>
     </div>
@@ -107,6 +107,11 @@
         <button onclick="deleteEntry(event);">X</button>
       </div>
     </template>
+    <!-- Used by the script -->
     <div class="elems"></div>
+
+    <div class="generate">
+      <button>Générer</button>
+    </div>
   </body>
 </html>

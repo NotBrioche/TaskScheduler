@@ -1,7 +1,11 @@
-#inputs {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+hr {
+  border: 1px black solid;
+  width: 100%;
+  margin: 1rem 0px;
+}
+
+h2 {
+  margin: 0px;
 }
 
 .invisible {
@@ -28,12 +32,11 @@
 
 .elem > h1 {
   font-size: 20px;
-  flex-grow: 2;
+  width: 50%;
   margin: 0px;
 }
 
 .elem > p {
-  flex-grow: 1;
   margin: 0px;
 }
 
@@ -67,12 +70,20 @@
   margin-top: 3px;
 }
 
-hr {
-  border: 1px black solid;
+.generate {
+  margin-top: 2rem;
   width: 100%;
-  margin: 1rem 0px;
+  display: flex;
+  justify-content: center;
 }
 
-h2 {
-  margin: 0px;
+.generate > button {
+  padding: 0.5rem 1rem;
+  font-size: 17px;
+}
+
+#inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
