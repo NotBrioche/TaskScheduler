@@ -9,6 +9,9 @@ const taskPlaceholders = [
 taskTitle.placeholder =
   taskPlaceholders[Math.floor(Math.random() * taskPlaceholders.length)];
 
+// Sync on page load
+displaySessionStorage();
+
 function resetErrors() {
   const errors = document.querySelectorAll(".error");
   errors.forEach((e) => {
@@ -45,7 +48,7 @@ function taskSubmit() {
     return;
   }
 
-  sessionStorage.setItem(title, `${title}\t${time}min`);
+  sessionStorage.setItem(title, `${title}\t${time}`);
   displaySessionStorage();
 }
 
@@ -109,8 +112,7 @@ function displaySessionStorage() {
     const clone = template.content.cloneNode(true).firstElementChild;
     if (content.length == 2) {
       clone.children[0].innerHTML = content[0];
-      clone.children[1].innerHTML = content[1];
-      // document.querySelector(".elems").appendChild(clone);
+      clone.children[1].innerHTML = content[1] + "min";
     } else if (content.length == 3) {
       clone.children[0].innerHTML = content[0];
       clone.children[1].innerHTML = `${content[1]} - ${content[2]}`;
@@ -126,5 +128,38 @@ function deleteEntry(event) {
   displaySessionStorage();
 }
 
-// Sync on page load
-displaySessionStorage();
+function generateResult() {
+  const tasksObj = new Object();
+  const tasks = [];
+
+  for (let i = 0; i < sessionStorage.length; i++) {
+    const obj = new Object();
+    const elems = sessionStorage.getItem(sessionStorage.key(i)).split("\t");
+    obj.name = elems[0];
+
+    if (elems.length == 2) {
+      obj.time_to_do = parseInt(elems[1]);
+    } else if (elems.length == 3) {
+      const d = new Date();
+      for (let j = 0; j < 2; j++) {
+        const hm = elems[j + 1].split(":");
+        const dateStr = new Date(
+          d.getFullYear(),
+          d.getMonth(),
+          d.getDay(),
+          hm[0],
+          hm[1]
+        ).toISOString();
+
+        if (j == 0) obj.start = dateStr.substring(0, dateStr.length - 5);
+        else obj.end = dateStr.substring(0, dateStr.length - 5);
+      }
+    }
+    tasks.push(obj);
+  }
+
+  tasksObj.tasks = tasks;
+  const json = JSON.stringify(tasksObj);
+
+  console.log(json);
+}
