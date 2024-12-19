@@ -128,7 +128,7 @@ function deleteEntry(event) {
   displaySessionStorage();
 }
 
-function generateResult() {
+async function generateResult() {
   const tasksObj = new Object();
   const tasks = [];
 
@@ -162,4 +162,12 @@ function generateResult() {
   const json = JSON.stringify(tasksObj);
 
   console.log(json);
+
+  const text = await fetch("http://localhost:3000/order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(tasksObj),
+  }).then((text) => text.text().then((data) => console.log(data)));
 }
