@@ -70,7 +70,7 @@ const OrderTasks = (json: any) => {
 
   passed = 0;
 
-  console.log(`--- ${start.toLocaleString()} ---`);
+  // console.log(`--- ${start.toLocaleString()} ---`);
 
   for (let i = 0; i < elements.length; i++) {
     if (elements[i].start == null) {
@@ -85,13 +85,13 @@ const OrderTasks = (json: any) => {
       passed +=
         (elements[i].start!.getTime() - elements[i - 1].end!.getTime()) / 1000;
 
-    console.log(
-      `[${i + 1}] ${elements[i].name} - ${elements[i].timeToDo}min (${elements[
-        i
-      ].start?.toLocaleTimeString()} - ${elements[
-        i
-      ].end?.toLocaleTimeString()})`
-    );
+    // console.log(
+    //   `[${i + 1}] ${elements[i].name} - ${elements[i].timeToDo}min (${elements[
+    //     i
+    //   ].start?.toLocaleTimeString()} - ${elements[
+    //     i
+    //   ].end?.toLocaleTimeString()})`
+    // );
   }
 
   return elements;

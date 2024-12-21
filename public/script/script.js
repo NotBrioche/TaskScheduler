@@ -108,7 +108,7 @@ function displaySessionStorage() {
   document.querySelector(".elems").innerHTML = "";
   for (let i = 0; i < sessionStorage.length; i++) {
     const content = sessionStorage.getItem(sessionStorage.key(i)).split("\t");
-    const template = document.querySelector("template");
+    const template = document.querySelector("template.task");
     const clone = template.content.cloneNode(true).firstElementChild;
     if (content.length == 2) {
       clone.children[0].innerHTML = content[0];
@@ -159,15 +159,30 @@ async function generateResult() {
   }
 
   tasksObj.tasks = tasks;
-  const json = JSON.stringify(tasksObj);
+  const results = document.querySelector(".results");
+  const template = document.querySelector("template.result");
 
-  console.log(json);
+  results.innerHTML = `<div class="date">${new Date().toLocaleDateString()}</div>`;
 
-  const text = await fetch("http://localhost:3000/order", {
+  await fetch("http://localhost:3000/order", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(tasksObj),
-  }).then((text) => text.text().then((data) => console.log(data)));
+  }).then((text) =>
+    text.text().then((data) =>
+      JSON.parse(data).forEach((e, k) => {
+        const clone = template.content.cloneNode(true).firstElementChild;
+        clone.children[0].innerHTML = k + 1;
+        clone.children[1].innerHTML = e.name;
+        clone.children[2].innerHTML =
+          new Date(e.start).toLocaleTimeString() +
+          " - " +
+          new Date(e.end).toLocaleTimeString();
+        clone.children[3].innerHTML = e.timeToDo + "min";
+        results.appendChild(clone);
+      })
+    )
+  );
 }

@@ -82,6 +82,39 @@ h2 {
   font-size: 17px;
 }
 
+.results {
+  display: flex;
+  flex-flow: column;
+  margin-top: 30px;
+}
+
+.results > .date {
+  text-align: center;
+  font-weight: bold;
+}
+
+div.result {
+  display: flex;
+  flex-flow: row;
+  border: 1px solid black;
+}
+
+div.result ~ div.result {
+  border-top: none;
+}
+
+.result > .number {
+  padding: 0px 10px;
+}
+
+.result > .title {
+  flex-grow: 1;
+}
+
+.result > .range {
+  padding: 0px 15px;
+}
+
 #inputs {
   display: flex;
   flex-direction: row;
