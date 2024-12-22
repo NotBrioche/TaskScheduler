@@ -5,7 +5,7 @@ import path from "path";
 dotenv.config();
 
 const app: Application = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3500;
 
 const publicDirectoryPath = path.join(__dirname, "../public");
 

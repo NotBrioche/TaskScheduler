@@ -1,0 +1,61 @@
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background: #f3f4f6;
+}
+
+h2 {
+  color: black;
+
+  font-size: 18px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+}
+
+div.result {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 5px;
+  width: 70vw;
+  margin: 0px auto;
+}
+
+.result ~ .result {
+  margin-top: 10px;
+}
+
+.result h1 {
+  font-size: 16px;
+  color: #374151;
+  margin: 0px;
+  padding: 0px;
+}
+
+.result p {
+  color: #6b7280;
+  margin: 0px;
+}
+
+button {
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 15px;
+  background: linear-gradient(90deg, #3b82f6, #272eb6);
+  cursor: pointer;
+  width: 40%;
+  margin: 0px auto;
+  margin-top: 20px;
+}

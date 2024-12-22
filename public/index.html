@@ -3,117 +3,84 @@
   <head>
     <meta chabrset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Custom -->
     <link rel="stylesheet" href="css/style.css" />
     <script src="script/script.js" defer></script>
 
-    <title>TaskScheduler</title>
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <title>Task Scheduler</title>
   </head>
   <body>
-    <h1>TaskScheduler</h1>
-    <div id="inputs">
-      <form onsubmit="taskSubmit();">
-        <div class="input">
-          <h2>Nouvelle tâche</h2>
-          <hr />
-          <div class="user_input">
-            <label for="title_task">Titre:</label>
-            <input type="text" id="title_task" required />
-            <p class="error invisible">Veuillez entrer un titre non vide</p>
-          </div>
+    <h1>Task Scheduler</h1>
+    <div class="inputs">
+      <div class="task">
+        <h2>Organize Tasks and Appointments</h2>
+        <form onsubmit="formSubmit();" name="input">
+          <div class="input">
+            <div class="user_input">
+              <label for="title_task">Task</label>
+              <div>
+                <input type="text" id="title_task" />
+                <input
+                  type="number"
+                  id="time"
+                  placeholder="Time required (min)"
+                  min="1"
+                  max="180"
+                />
+                <select id="priority">
+                  <option value="none" disabled selected>Priority</option>
+                  <option value="none">None</option>
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
 
-          <div class="user_input">
-            <label for="time">Temps requis (min):</label>
-            <input
-              type="number"
-              id="time"
-              placeholder="1 - 180"
-              min="1"
-              max="180"
-              required
-            />
-            <p class="error invisible">Veuillez entrer un nombre valide</p>
+              <label for="title_event">Appointment</label>
+              <div>
+                <input type="text" id="title_event" placeholder="Name" />
+                <input type="time" id="appoint_start" />
+                <input type="time" id="appoint_end" />
+              </div>
+            </div>
+            <p class="error hidden">You must at least fill one field</p>
+            <button type="submit">Add</button>
           </div>
-
-          <div class="priority">
-            <label for="no_priority">Aucune</label>
-            <input
-              type="radio"
-              name="priority"
-              id="no_priority"
-              value="none"
-              checked
-            />
-          </div>
-          <div class="priority">
-            <label for="low_priority">Faible</label>
-            <input type="radio" name="priority" id="low_priority" value="low" />
-          </div>
-          <div class="priority">
-            <label for="medium_priority">Moyenne</label>
-            <input
-              type="radio"
-              name="priority"
-              id="medium_priority"
-              value="medium"
-            />
-          </div>
-          <div class="priority">
-            <label for="high_priority">Élevée</label>
-            <input
-              type="radio"
-              name="priority"
-              id="high_priority"
-              value="high"
-            />
-          </div>
-          <hr />
-          <button type="submit">Créer</button>
-        </div>
-      </form>
-
-      <form onsubmit="eventSubmit();">
-        <div class="input">
-          <h2>Nouveau rendez-vous</h2>
-          <hr />
-          <div class="user_input">
-            <label for="title_event">Titre:</label>
-            <input type="text" id="title_event" required />
-            <p class="error invisible">Veuillez renseigner ce champ</p>
-          </div>
-
-          <div class="user_input">
-            <label for="start">Début:</label>
-            <input type="text" placeholder="17:00" id="start" required />
-            <p class="error invisible">Veuillez entrer un format valide</p>
-          </div>
-
-          <div class="user_input">
-            <label for="end">Fin:</label>
-            <input type="text" placeholder="19:00" id="end" required />
-            <p class="error invisible">Veuillez entrer un format valide</p>
-          </div>
-
-          <hr />
-          <button type="submit">Créer</button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
 
-    <h2>Enregistré:</h2>
-    <br />
+    <h2>Your Tasks</h2>
     <template class="task">
       <div class="elem">
-        <h1>Faire la vaisselle</h1>
+        <h1>Task 1</h1>
         <p>15min</p>
-        <button onclick="deleteEntry(event);">X</button>
+        <a onclick="deleteEntry(event);"
+          ><i class="material-icons">delete</i></a
+        >
       </div>
     </template>
 
     <!-- Used by the script -->
     <div class="elems"></div>
 
+    <h2>Create results</h2>
     <div class="generate">
-      <button onclick="generateResult();">Générer</button>
+      <form id="range">
+        <label>Time</label>
+        <div>
+          <input type="time" id="range_start" value="06:00" name="start" />
+          <input type="time" id="range_end" value="22:00" name="end" />
+        </div>
+      </form>
+      <button onclick="generateResult();" disabled>Create</button>
     </div>
 
     <template class="result">

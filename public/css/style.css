@@ -1,122 +1,200 @@
-hr {
-  border: 1px black solid;
-  width: 100%;
-  margin: 1rem 0px;
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background: linear-gradient(90deg, #3b82f6, #272eb6);
+}
+
+h1 {
+  color: #1e3a8a;
+  background-color: #ffffff;
+  margin-top: 0px;
+  padding: 14px;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 h2 {
-  margin: 0px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
 }
 
-.invisible {
-  visibility: hidden;
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+}
+
+.task {
+  width: 50vw;
+  margin: 0px auto;
 }
 
 .input {
   display: flex;
   flex-direction: column;
-  border: 1px black solid;
-  padding: 1rem 2rem;
-  width: 20dvw;
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 24px;
+}
+
+.user_input {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_input div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 7px;
+  row-gap: 8px;
+}
+
+.user_input div ~ label {
+  margin-top: 20px;
+}
+
+.user_input div div {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  column-gap: auto;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.user_input input,
+.user_input select {
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  padding: 7px 15px;
+  background-color: #ffffff;
+}
+
+.user_input input[type="text"] {
+  flex-grow: 3;
+}
+
+.user_input input[type="number"] {
+  flex-grow: 2;
+  padding: 7px 10px;
+}
+
+.subinput label {
+  margin-bottom: 0px;
+  font-size: 0.9em;
+}
+
+.error {
+  color: #f6585b;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+button[type="submit"] {
+  width: 80%;
+  border-radius: 6px;
+  border: none;
+  background: linear-gradient(90deg, #3b82f6, #272eb6);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0px auto;
+  padding: 5px;
+}
+
+button[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.elems {
+  width: 40vw;
   margin: 0px auto;
 }
 
 .elem {
-  border: 1px solid black;
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
+  border-radius: 5px;
+  padding: 16px;
+  margin-bottom: 10px;
   justify-content: space-between;
-  padding: 5px;
-  width: 40vw;
 }
 
-.elem > h1 {
-  font-size: 20px;
-  width: 50%;
-  margin: 0px;
+.elem h1 {
+  width: 60%;
+  margin: auto 0px;
+  padding: 0px;
+  font-size: medium;
+  color: #000000;
 }
 
-.elem > p {
-  margin: 0px;
+.elem p {
+  padding: 0px;
+  margin: auto 0px;
+  color: #6b7280;
 }
 
-.elem ~ .elem {
-  border-top: 0px;
-}
-
-.user_input > * {
-  display: block;
-  width: 100%;
-}
-
-.user_input > input {
-  padding: 0.3rem;
-}
-
-.input > button[type="submit"] {
-  align-self: center;
-  padding: 0.2rem 1rem;
-}
-
-.input > div.priority {
-  width: 25%;
-  justify-content: space-between;
-  display: flex;
-}
-
-.input p.error {
-  font-size: 13px;
-  color: red;
-  margin-top: 3px;
+.elem a > i {
+  color: #f6585b;
+  cursor: pointer;
 }
 
 .generate {
-  margin-top: 2rem;
-  width: 100%;
+  background-color: #ffffff;
+  padding: 10px;
+  width: 30vw;
+  border-radius: 5px;
+  margin: 0px auto;
+  margin-bottom: 30px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.generate > button {
-  padding: 0.5rem 1rem;
-  font-size: 17px;
-}
-
-.results {
+.generate > form > div {
   display: flex;
-  flex-flow: column;
-  margin-top: 30px;
-}
-
-.results > .date {
-  text-align: center;
-  font-weight: bold;
-}
-
-div.result {
-  display: flex;
-  flex-flow: row;
-  border: 1px solid black;
-}
-
-div.result ~ div.result {
-  border-top: none;
-}
-
-.result > .number {
-  padding: 0px 10px;
-}
-
-.result > .title {
-  flex-grow: 1;
-}
-
-.result > .range {
-  padding: 0px 15px;
-}
-
-#inputs {
-  display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.generate input {
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  padding: 7px 15px;
+}
+
+.generate button {
+  margin: 0px auto;
+  margin-top: 20px;
+  color: #ffffff;
+  background: linear-gradient(90deg, #3b82f6, #272eb6);
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 80%;
+}
+
+.generate button:disabled {
+  color: #e3e3e3;
+  cursor: not-allowed;
 }
