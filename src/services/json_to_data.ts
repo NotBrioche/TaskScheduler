@@ -20,16 +20,16 @@ const range = (json: any) => {
 };
 
 const JsonToData = (json: any) => {
-  const elems: Array<Task> = [];
+  const elements: Array<Task> = [];
 
   json.tasks.forEach((t: any) => {
     if (t.name != null && t.name.trim() != "") {
       if (t.time_to_do != null) {
-        elems.push(new Task(t.name, t.time_to_do, t.priority ?? 0, null, null));
+        elements.push(new Task(t.name, t.time_to_do, t.priority ?? 0, null, null));
       } else if (t.start != null && t.end != null) {
         const start: Date = new Date(t.start);
         const end: Date = new Date(t.end);
-        elems.push(
+        elements.push(
           new Task(
             t.name,
             end.getTime() - start.getTime() / 1000 / 60,
@@ -42,7 +42,7 @@ const JsonToData = (json: any) => {
     }
   });
 
-  return elems;
+  return elements;
 };
 
 module.exports = { JsonToData, start, range };

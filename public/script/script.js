@@ -54,7 +54,7 @@ function formSubmit() {
 }
 
 function displaySessionStorage() {
-  document.querySelector(".elems").innerHTML = "";
+  document.querySelector(".elements").innerHTML = "";
   for (let i = 0; i < sessionStorage.length; i++) {
     const content = sessionStorage.getItem(sessionStorage.key(i)).split("\t");
     const template = document.querySelector("template.task");
@@ -67,11 +67,11 @@ function displaySessionStorage() {
       clone.children[1].innerHTML = `${content[2]} - ${content[3]}`;
     }
 
-    document.querySelector(".elems").appendChild(clone);
+    document.querySelector(".elements").appendChild(clone);
   }
 
   const generate = document.querySelector(".generate");
-  if (document.querySelector(".elems").children.length < 1) {
+  if (document.querySelector(".elements").children.length < 1) {
     generate.children[generate.children.length - 1].disabled = true;
   } else {
     generate.children[generate.children.length - 1].disabled = false;
@@ -91,15 +91,15 @@ async function generateResult() {
 
   for (let i = 0; i < sessionStorage.length; i++) {
     const obj = new Object();
-    const elems = sessionStorage.getItem(sessionStorage.key(i)).split("\t");
-    obj.name = elems[1];
+    const elements = sessionStorage.getItem(sessionStorage.key(i)).split("\t");
+    obj.name = elements[1];
 
-    if (elems[0] == "Task") {
-      obj.time_to_do = parseInt(elems[2]);
-    } else if (elems[0] == "Appointment") {
+    if (elements[0] == "Task") {
+      obj.time_to_do = parseInt(elements[2]);
+    } else if (elements[0] == "Appointment") {
       const d = new Date();
       for (let j = 0; j < 2; j++) {
-        const hm = elems[j + 2].split(":");
+        const hm = elements[j + 2].split(":");
         const dateStr = new Date(
           d.getFullYear(),
           d.getMonth(),

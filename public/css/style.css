@@ -2,6 +2,7 @@ html,
 body {
   margin: 0px;
   padding: 0px;
+  font-family: "Arial", "Verdana";
 }
 
 body {
@@ -90,11 +91,6 @@ label {
   padding: 7px 10px;
 }
 
-.subinput label {
-  margin-bottom: 0px;
-  font-size: 0.9em;
-}
-
 .error {
   color: #f6585b;
   margin-top: 20px;
@@ -122,7 +118,7 @@ button[type="submit"]:hover {
   cursor: pointer;
 }
 
-.elems {
+.elements {
   width: 40vw;
   margin: 0px auto;
 }
