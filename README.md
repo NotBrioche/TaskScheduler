@@ -1,9 +1,32 @@
 # TaskScheduler
-TaskScheduler is a simple program I created to learn TypeScript syntax and get familiar with NodeJs. This is my first time using theses.
 
-📌 Don't expect much from this. It is probably bugged and have a very simple behavior. Note : I'm still open to any suggestions for the code.
-# How does it work?
-If you launch the app a web server will be created on your http://localhost:3500. You will land on a page like this :
+TaskScheduler is a simple program designed to help users organize and schedule their daily tasks and appointments. The application allows users to input their tasks and appointments, and then generates a schedule for the day.
+
+## Objective
+
+The objective of this project was to learn the basics of TypeScript and how to use it.
+
+## Main Page
+
+The main page of the application is shown below:
+
 ![Index page of the app](images/index.png)
 
-On this page you can enter all the tasks and appointments you have during your day. When all of this is done you enter the start and end of your day and your tasks will be arranged for you automatically.
+As you can see, the main page allows users to input their tasks and appointments, and then generates a schedule for the day. The application is designed to be easy to use and understand, with a simple and intuitive interface.
+
+## Features
+
+* User input for tasks and appointments
+* Automatic generation of a daily schedule
+* Simple and intuitive interface
+
+## How it Works
+
+1. Users input their tasks and appointments on the main page.
+2. The application generates a schedule for the day based on the user's input.
+3. The schedule is displayed on the main page, showing the user's tasks and appointments for the day.
+
+## Using it
+1. Download the project
+2. Run `npm start`
+3. Go to https://localhost:3000
