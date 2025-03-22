@@ -1,8 +1,8 @@
-const data = require("./json_to_data");
-import { Task } from "../utils/classes";
+const data = require('./json_to_data');
+import { Task } from '../utils/classes';
 
 const OrderTasks = (json: any) => {
-  const elems = data.JsonToData(json);
+  const elems: Array<Task> = data.JsonToData(json);
   const start: Date = new Date(data.start(json));
 
   const range: number = data.range;
@@ -97,4 +97,4 @@ const OrderTasks = (json: any) => {
   return elements;
 };
 
-module.exports = { OrderTasks };
+export = { OrderTasks };

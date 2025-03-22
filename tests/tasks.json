@@ -2,16 +2,16 @@
   "tasks": [
     {
       "name": "Vider le lave vaisselle",
-      "time_to_do": 5
+      "timeToDo": 5
     },
     {
       "name": "Préparer mes affaires",
       "priority": 2,
-      "time_to_do": 15
+      "timeToDo": 15
     },
     {
       "name": "Douche",
-      "time_to_do": 15,
+      "timeToDo": 15,
       "priority": 1
     },
     {

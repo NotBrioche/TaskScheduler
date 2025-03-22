@@ -7,10 +7,11 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Order_Tasks",
+      "name": "Main",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/dist/src/services/order_tasks.js",
-      "outFiles": ["${workspaceFolder}/**/*.js"]
+      "program": "${workspaceFolder}/src/app.ts",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     }
   ]
 }

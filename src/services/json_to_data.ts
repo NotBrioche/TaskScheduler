@@ -1,7 +1,7 @@
-import { Task } from "../utils/classes";
+import { Data, Task } from '../utils/classes';
 
 const start = (json: any) => {
-  if (!("range" in json) || !("start" in json.range)) return new Date();
+  if (!('range' in json) || !('start' in json.range)) return new Date();
   else return new Date(json.range.start);
 };
 
@@ -19,13 +19,15 @@ const range = (json: any) => {
   }
 };
 
-const JsonToData = (json: any) => {
+const JsonToData = (json: Data) => {
   const elements: Array<Task> = [];
 
-  json.tasks.forEach((t: any) => {
-    if (t.name != null && t.name.trim() != "") {
-      if (t.time_to_do != null) {
-        elements.push(new Task(t.name, t.time_to_do, t.priority ?? 0, null, null));
+  json.tasks.forEach((t: Task) => {
+    if (t.name != null && t.name.trim() != '') {
+      if (t.timeToDo != null) {
+        elements.push(
+          new Task(t.name, t.timeToDo, t.priority ?? 0, null, null)
+        );
       } else if (t.start != null && t.end != null) {
         const start: Date = new Date(t.start);
         const end: Date = new Date(t.end);
@@ -45,4 +47,4 @@ const JsonToData = (json: any) => {
   return elements;
 };
 
-module.exports = { JsonToData, start, range };
+export = { JsonToData, start, range };

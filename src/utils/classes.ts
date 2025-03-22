@@ -1,10 +1,10 @@
 export class Task {
-  name: string = "";
-  timeToDo: number = 0;
-  priority: number = 0;
+  name: string;
+  timeToDo: number;
+  priority: number;
 
-  start?: Date | null = null;
-  end?: Date | null = null;
+  start?: Date | null;
+  end?: Date | null;
 
   constructor(
     name: string,
@@ -37,5 +37,33 @@ export class Task {
       } ${this.start.getTime()} ${this.end.getTime()}`;
     else
       return `[Task]: ${this.name} ${this.timeToDo} ${this.priority} ${this.start} ${this.end}`;
+  }
+}
+
+export class Range {
+  private _start: string;
+  private _end: string;
+
+  get start(): Date {
+    return new Date(this._start);
+  }
+
+  get end(): Date {
+    return new Date(this._end);
+  }
+
+  constructor(start: string, end: string) {
+    this._start = start;
+    this._end = end;
+  }
+}
+
+export class Data {
+  tasks: Array<Task>;
+  range: Range;
+
+  constructor(tasks: Array<Task>, range: Range) {
+    this.tasks = tasks;
+    this.range = range;
   }
 }
