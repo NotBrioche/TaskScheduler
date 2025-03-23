@@ -3,15 +3,15 @@ export class Task {
   timeToDo: number;
   priority: number;
 
-  start?: Date | null;
-  end?: Date | null;
+  start?: number | null;
+  end?: number | null;
 
   constructor(
     name: string,
     timeToDo: number,
     priority: number,
-    start?: Date | null,
-    end?: Date | null
+    start?: number | null,
+    end?: number | null
   ) {
     this.name = name;
     this.timeToDo = timeToDo;
@@ -21,28 +21,27 @@ export class Task {
   }
 
   static ToDo(name: string, timeToDo: number, priority?: number) {
-    if (priority == null) priority = 0;
-
-    return new Task(name, timeToDo, priority, null, null);
+    return new Task(name, timeToDo, priority ?? 0);
   }
 
-  static Having(name: string, start: string, end: string) {
-    return new Task(name, 0, 0, new Date(start), new Date(end));
+  static Appointment(name: string, start: number, end: number) {
+    return new Task(
+      name,
+      0,
+      0,
+      new Date(start).getTime(),
+      new Date(end).getTime()
+    );
   }
 
   toString(): string {
-    if (this.start != null && this.end != null)
-      return `[Task]: ${this.name} ${this.timeToDo} ${
-        this.priority
-      } ${this.start.getTime()} ${this.end.getTime()}`;
-    else
-      return `[Task]: ${this.name} ${this.timeToDo} ${this.priority} ${this.start} ${this.end}`;
+    return `[Task]: ${this.name} ${this.timeToDo} ${this.priority} ${this.start} ${this.end}`;
   }
 }
 
 export class Range {
-  private _start: string;
-  private _end: string;
+  private _start: number;
+  private _end: number;
 
   get start(): Date {
     return new Date(this._start);
@@ -52,9 +51,13 @@ export class Range {
     return new Date(this._end);
   }
 
-  constructor(start: string, end: string) {
+  constructor(start: number, end: number) {
     this._start = start;
     this._end = end;
+  }
+
+  static fromDateString(start: string, end: string) {
+    return new Range(new Date(start).getTime(), new Date(end).getTime());
   }
 }
 

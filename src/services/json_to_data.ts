@@ -29,16 +29,10 @@ const JsonToData = (json: Data) => {
           new Task(t.name, t.timeToDo, t.priority ?? 0, null, null)
         );
       } else if (t.start != null && t.end != null) {
-        const start: Date = new Date(t.start);
-        const end: Date = new Date(t.end);
+        const start: number = new Date(t.start).getTime();
+        const end: number = new Date(t.end).getTime();
         elements.push(
-          new Task(
-            t.name,
-            end.getTime() - start.getTime() / 1000 / 60,
-            t.priority ?? 0,
-            start,
-            end
-          )
+          new Task(t.name, end - start / 1000 / 60, t.priority ?? 0, start, end)
         );
       }
     }
