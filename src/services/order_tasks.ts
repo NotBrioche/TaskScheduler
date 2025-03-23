@@ -1,15 +1,15 @@
-const data = require('./json_to_data');
-import { Task } from '../utils/classes';
+const convert = require('./json_to_data');
+import { Data, Task } from '../utils/classes';
 
-const OrderTasks = (json: any) => {
-  const elems: Array<Task> = data.JsonToData(json);
-  const start: Date = new Date(data.start(json));
+const OrderTasks = (json: Data) => {
+  const data: Array<Task> = convert.JsonToData(json);
+  const start: Date = new Date(convert.start(json));
 
-  const range: number = data.range;
+  const range: number = convert.range;
   const tasks: Array<Task> = [];
   const schedules: Array<Task> = [];
 
-  elems.forEach((e: Task) => {
+  data.forEach((e: Task) => {
     if (e.start == null && e.end == null) {
       tasks.push(e);
     } else {
